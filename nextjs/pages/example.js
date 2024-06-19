@@ -20,7 +20,7 @@ export default function Example() {
         <p>
           Streptomyces coelicolor is a soil-dwelling bacterium that is known for its complex life cycle and its ability to produce a wide range of secondary metabolites. The following dataset includes one S. coelicolor strain <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=100226">A3(2) <i class="fas fa-external-link-alt"></i></a>.
           The data was originally from the study by  <a href="https://www.nature.com/articles/ncomms11605">Jeong et al. (2016) <i class="fas fa-external-link-alt"></i></a>.
-          <br />The dataset is available for download here: <a href="/example/sceolicolor/dataset.zip"><i className="fas fa-download"></i></a>
+          <br />The dataset is available for download here: <a href="/example/scoelicolor/dataset.zip"><i className="fas fa-download"></i></a>
           <br />The corresponding report from TSS-Captur is available here: <a href="/example/scoelicolor/report/Interface/overview.html">[Click here]</a>
         </p>
         <h2 className="h4 mb-3 text-gray-800">Campylobacter jejuni</h2>
