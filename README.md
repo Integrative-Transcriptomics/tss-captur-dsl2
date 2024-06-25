@@ -1,5 +1,8 @@
 # TSS-Captur: A TSS-characterization pipeline for transcribed but unclassified RNA-transcripts
 
+[![DOI](https://zenodo.org/badge/690975479.svg)](https://zenodo.org/doi/10.5281/zenodo.12527008)
+
+
 The aim of this project fork was to migrate TSS-Captur to the new Nextflow DSL2 syntax while integrating new features to improve functionality and user experience. In addition to the pipeline improvements, there was a strong focus on extending accessibility through the development of a web application. NextJS was chosen for its robust features and ease of integration with server-side operations.
 
 To enable the characterization of transcripts in an explorative manner, we have developed TSS-Captur. TSS-Captur characterizes transcripts starting on clear TSS signals obtained from TSSpredator (Herbig, 2015) that cannot be associated to any known gene. To characterize the function of the transcript, TSS-Captur integrates tools using different approaches. The following figure describes the different steps and tools run by TSS-Captur. 
