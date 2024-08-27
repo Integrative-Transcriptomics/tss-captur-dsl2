@@ -106,7 +106,9 @@ def give_genomes():
     terminators = data["terminators"]
     summaryMotifs = data["summary_motifs"]
     short_description = data["short_description"]
-    return dict(genomes=genomes, outputPath=outputPath, short_description=short_description, avoidedTSS=avoided, classified=classifiedData, terminators=terminators, overviewData=overviewData, summaryMotifs=summaryMotifs)
+    model = data["model_cnit"]
+    motifs = data["number_motifs"]
+    return dict(genomes=genomes, outputPath=outputPath, short_description=short_description, avoidedTSS=avoided, classified=classifiedData, terminators=terminators, overviewData=overviewData, summaryMotifs=summaryMotifs, model_cnit=model, number_motifs=motifs)
 
 
 @ app.route('/overview.html')
@@ -156,6 +158,10 @@ def getAvoidedTSS(outputPath, genome):
 def avoided():
     return render_template('avoided.html')
 
+@ app.route('/references.html')
+def references():
+    return render_template('references.html')
+
 
 @ app.after_request
 def add_header(r):
@@ -174,8 +180,12 @@ if __name__ == '__main__':
     index = 0
     parser = argparse.ArgumentParser()
     parser.add_argument("--path")
+    parser.add_argument("--model")
+    parser.add_argument("--motifs")
     args = parser.parse_args()
     outputPath = args.path
+    model = args.model
+    motifs = args.motifs
     print("Parsing files in %s" % outputPath)
     genomes_list = os.path.join(args.path, "genomes_text.txt")
     with open(genomes_list) as f:
@@ -183,7 +193,7 @@ if __name__ == '__main__':
     genomes.sort()
     print("Genomes found: %s" % ", ".join(genomes))
     data = {"avoided": {}, "overview": {},
-            "classification": {}, "terminators": {}, "summary_motifs": {}, "short_description": {}}
+            "classification": {}, "terminators": {}, "summary_motifs": {}, "short_description": {}, "model_cnit": {}, "number_motifs": {}}
     for it, g in enumerate(genomes):
         print("Parsing data: {} % ".format(100 * float(it) / len(genomes)))
         data["avoided"][g] = getAvoidedTSS(outputPath, g)
@@ -192,6 +202,8 @@ if __name__ == '__main__':
         temp_overview = createOverviewData(outputPath, g)
         data["overview"][g] = temp_overview[0]
         data["summary_motifs"][g] = temp_overview[1]
+        data["model_cnit"][g] = model
+        data["number_motifs"][g] = motifs
         data["short_description"][g] = createShort(
             temp_overview[0], data["avoided"][g])
     print("Parsing completed. Freezing Interface.")

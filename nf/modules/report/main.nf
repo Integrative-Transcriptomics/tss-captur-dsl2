@@ -18,6 +18,27 @@ process CREATEREPORT {
     """
         cp -r $params.staticfiles static
         cp -r $params.templates templates
-        python3 $params.pyCreateReport --path $outputPath
+        python3 $params.pyCreateReport --path $outputPath --model $params.cnitModel --motifs $params.motifNumber
+    """
+}
+
+process ZIPREPORT {
+    label params.reportLabel
+    publishDir "$outputPath/", pattern: "*.zip", mode: params.pubDirMode
+
+    input:
+    val report_ready
+    val outputPath
+
+	
+	output:
+	path "*.zip" 
+
+    script:
+    """
+        timestamp="\$(date +%s)"
+        mkdir TSS-CAPTUR-Report-\$timestamp
+        cp -r $outputPath/* TSS-CAPTUR-Report-\$timestamp
+        zip -r report.zip TSS-CAPTUR-Report-\$timestamp
     """
 }
