@@ -92,8 +92,7 @@ def find_terminators(row_transcript, df, max_distance):
     # Depending of the strand, the end or the start of the terminator is taken into account
     is_plus = strand == "+"
     look_for = "start" if is_plus else "end"
-    # We allow a 600 nt distance from the TSS (Herbig, 2011)
-    # We still need to compare if the seq we are using is larger than 600, hence the min/max comparison
+    # We still need to compare if the seq we are using is larger than the predicted length provided by QRNA and CNIT, hence the min/max comparison
     start_look_for = min(
         end - max_distance[row_id], start) if not is_plus else max(start, utr_end)
     end_look_for = max(

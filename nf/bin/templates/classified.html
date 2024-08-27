@@ -5,11 +5,15 @@
     <h1 class="h3 mb-0 text-gray-800">Classification</h1>
 </div>
 <p class="mb-4">
-    The following interface serves as a visualization of the results produced by TSS-CAPTUR. The possibility exists between an <a href="overview.html">overview</a>> of all results or the detailed results of the <a href="classified.html">classification</a> or the <a href="terminators.html">terminator allocation</a> steps of TSS-CAPTUR. The possibility of some TSS being ignored by TSS-CAPTUR due to their short lenght exists. They are found <a href="avoided.html">here</a> . </p>
-    <p class="mb-4">The current page presents a detailed view on the results on the transcript classification. TSS-CAPTUR uses two programs (CNIT and QRNA) to classify the transcripts in either coding (COD) or non-coding (RNA) transcripts. 
-        The following table allows the access to the final classification and some intermediate steps before it, such as which organism was used for the pairwiese alignment for QRNA. 
-        Since both programs used different scoring functions, a normalized z-score is given. If both programs agree on the predicion, the subcoordinates of the program with the highest z-score are used. 
-        If the predictions differ, TSS-CAPTUR labels the transcipt as a coding sequence. </p>
+    The following interface serves as a visualization of the results produced by TSS-CAPTUR. 
+    The possibility exists between an <a href="overview.html">overview</a>> of all results or the detailed results of the <a href="classified.html">classification</a> or the <a href="terminators.html">terminator allocation</a> steps of TSS-CAPTUR. 
+    The possibility of some TSS being ignored by TSS-CAPTUR due to their short length exists. They are found <a href="avoided.html">here</a>. 
+    For the more information on the tools and parameters used in TSS-CAPTUR, please refer to the <a href="references.html">references</a>.
+</p>
+ <p class="mb-4">The current page presents a detailed view on the results on the transcript classification. TSS-CAPTUR uses two programs (<a href="https://academic.oup.com/nar/article/47/W1/W516/5506859">CNIT</a> and <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-2-8">QRNA</a>) to classify the transcripts in either coding (COD) or non-coding (RNA) transcripts. 
+        The following table allows the access to the final classification and some intermediate steps before it, such as which organism was used for the pairwise alignment for <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-2-8">QRNA</a>. 
+        Since both programs used different scoring functions, a normalized z-score is given. If both programs agree on the prediction, the subcoordinates of the program with the highest z-score are used. 
+        If the predictions differ, TSS-CAPTUR labels the transcript as a coding sequence. </p>
 <!-- Content Row -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
