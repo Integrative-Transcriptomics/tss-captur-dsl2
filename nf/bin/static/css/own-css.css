@@ -1,0 +1,30 @@
+.citation {
+    background-color: #f4f4f4;
+    border-left: 5px solid #4CAF50;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.command-style {
+    background-color: #2d2d2d;
+    color: #8CD3FE;
+    font-family: "Courier New", Courier, monospace;
+    padding: 1em;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+h2 {
+    color: #333;
+}
+.parameters-title {
+    color: #8CD3FE;
+    font-weight: bold;
+}
+
+.command-style pre {
+    color: #fff;
+}
+
+pre span {
+    color: #8CD3FE;
+}

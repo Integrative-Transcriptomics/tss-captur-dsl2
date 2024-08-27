@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">References and parameters used</h1>
+</div>
+<p class="mb-4">
+    The following interface serves as a visualization of the results produced by TSS-CAPTUR. The possibility exists between an <a href="overview.html">overview</a> of all results or the detailed results of the <a href="classified.html">classification</a> or the <a href="terminators.html">terminator allocation</a> steps of TSS-CAPTUR. The possibility of some TSS being ignored by TSS-CAPTUR due to their short length exists. They are found <a href="avoided.html">here</a>. 
+    For the more information on the tools and parameters used in TSS-CAPTUR, please refer to the <a href="references.html">references</a>.
+</p>
+
+<p class="mb-4">
+    TSS-CAPTUR combines multiple tools to characterize transcripts starting at the analyzed TSSs, such as their class, putative terminator regions, their secondary structure and enriched motifs at the promoter regions.
+    Here is a short overview of the tools used in TSS-CAPTUR, together with the parameters used for each tool.
+    For a complete list of tools and parameters, please refer to the <a href="https://www.biorxiv.org/content/10.1101/2024.07.05.602221v1">preprint</a> or the <a href="https://github.com/Integrative-Transcriptomics/tss-captur-dsl2">GitHub repository</a>.
+</p>
+
+<div id="tools-container"></div>
+
+
+<script>
+    index = localStorage.getItem("genome") ? localStorage.getItem("genome") : 0;
+    genome_selected =genomes[index];
+    let motif_single = motifs[genome_selected];
+    let model_single = model[genome_selected];
+    // Array of tool objects
+    const tools = [
+        {
+            class: "Classification",
+            name: "CNIT",
+            citation: "Guo, J.-C., Fang, S.-S., Wu, Y., Zhang, J.-H., Chen, Y., Liu, J., Wu, B., Wu, J.-R., Li, E.-M., Xu, L.-Y., Sun, L., & Zhao, Y. (2019). CNIT: a fast and accurate web tool for identifying protein-coding and long non-coding transcripts based on intrinsic sequence composition. Nucleic Acids Research, 47(W1), W516–W522.",
+            url: "https://doi.org/10.1093/nar/gkz400",
+            toolName: "python CNCI2.py",
+            parameters: `-m ${model_single} -f [INPUT_FILE] -o [OUTPUT_FILE]`
+        }, {
+            class: "Classification",
+            name: "QRNA",
+            citation: "Rivas, E., & Eddy, S. R. (2001). Noncoding RNA gene detection using comparative sequence analysis. BMC Bioinformatics, 2(1), 8.",
+            url: "https://doi.org/10.1186/1471-2105-2-8",
+            toolName: "eqrna",
+            parameters: `--ones [INPUT_ALIGNMENT] > [OUTPUT_FILE]`
+        },{
+            class: "Terminator Prediction",
+            name: "RhoTermPredict",
+            citation: "Di Salvo, M., Puccio, S., Peano, C., Lacour, S., & Alifano, P. (2019). RhoTermPredict: An algorithm for predicting Rho-dependent transcription terminators based on Escherichia coli, Bacillus subtilis and Salmonella entericadatabases. BMC Bioinformatics, 20(1), 117.",
+            url: "https://doi.org/10.1186/s12859-019-2704-x",
+            toolName: "python3 RhoTermPredict.py",
+            parameters: `[INPUT_GENOME] --output [OUTPUT_FILE]`
+        }, {
+            class: "Terminator Prediction",
+            name: "TransTermHP",
+            citation: "Kingsford, C. L., Ayanbule, K., & Salzberg, S. L. (2007). Rapid, accurate, computational discovery of Rho-independent transcription terminators illuminates their relationship to DNA uptake. Genome Biology, 8(2), R22.",
+            url: "https://doi.org/10.1186/gb-2007-8-2-r22",
+            note: "Please note that TransTermHP is run via nocoRNAc.",
+            toolName: "java -Xmx1G -jar nocornac",
+            parameters: `-genomeFastaFile [INPUT_GENOME] -gffOutFile [OUTPUT_FILE] -terminators --transtermConfidenceCutoff 75`
+        },{
+            class: "Terminator Prediction",
+            name: "nocoRNAc",
+            citation: "Herbig, A., & Nieselt, K. (2011). nocoRNAc: Characterization of non-coding RNAs in prokaryotes. BMC Bioinformatics, 12(1), 40.",
+            url: "https://doi.org/10.1186/1471-2105-12-40",
+            note: "Please note that nocoRNAc is only used to run TransTermHP, since it allows a wrapper for a whole genome.",
+            toolName: "java -Xmx1G -jar nocornac",
+            parameters: `-genomeFastaFile [INPUT_GENOME] -gffOutFile [OUTPUT_FILE] -terminators --transtermConfidenceCutoff 75`
+        },{
+            class: "RNA Secondary Structure Prediction",
+            name: "RNAFold",
+            citation: "Lorenz, R., Bernhart, S. H., Höner zu Siederdissen, C., Tafer, H., Flamm, C., Stadler, P. F., & Hofacker, I. L. (2011). ViennaRNA Package 2.0. Algorithms for Molecular Biology, 6(1), 26.",
+            url: "https://doi.org/10.1186/1748-7188-6-26",
+            toolName: "RNAFold",
+            parameters: `--noLP -i [FASTA_SEQUENCES] > [OUTPUT_FILE]`
+        }, {
+            class: "Motif Search",
+            name: "MEME",
+            citation: "Bailey, T. L., Boden, M., Buske, F. A., Frith, M., Grant, C. E., Clementi, L., Ren, J., Li, W. W., & Noble, W. S. (2009). MEME Suite: Tools for motif discovery and searching. Nucleic Acids Research, 37(suppl_2), W202–W208.",
+            url: "https://doi.org/10.1093/nar/gkp335",
+            toolName: "meme",
+            parameters: `[PROMOTER_SEQUENCES] -dna -nmotifs ${motif_single} -minw 5 -maxw 20 `
+        },
+        
+    ];
+
+    // Function to generate HTML for each tool
+    function generateToolHTML(tool) {
+        return `
+        <div class="card shadow mb-4" class="citation">
+            <a href="#collapseCard${tool.name}" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">${tool.class}: ${tool.name}</h6>
+            </a>
+            <div class="collapse hide" id="collapseCard${tool.name}" style="">
+                <div class="card-body">
+                     <p>${tool.citation} <a target="_blank" rel="noopener noreferrer" href="${tool.url}"><i class="fas fa-fw  fa-external-link-alt"></i></a></p>
+                    <p><em>${tool.note ? tool.note : ""}</em></p>
+                        <p>Command:</p> 
+                     <div class="command-style">
+                     <pre> <span>${tool.toolName}</span> ${tool.parameters}</pre>
+                     </div>
+                </div>
+            </div>
+          `;
+    }
+
+    // Insert the tool information into the HTML
+    const toolsContainer = document.getElementById('tools-container');
+    tools.forEach(tool => {
+        toolsContainer.innerHTML += generateToolHTML(tool);
+    });
+</script>
+
+{% endblock %}

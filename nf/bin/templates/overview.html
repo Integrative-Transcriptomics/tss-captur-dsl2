@@ -7,10 +7,14 @@
     <h1 class="h3 mb-0 text-gray-800">Overview of data</h1>
 </div>
 <p class="mb-4">
-    The following interface serves as a visualization of the results produced by TSS-CAPTUR. The possibility exists between an <a href="overview.html">overview</a> of all results or the detailed results of the <a href="classified.html">classification</a> or the <a href="terminators.html">terminator allocation</a> steps of TSS-CAPTUR. The possibility of some TSS being ignored by TSS-CAPTUR due to their short lenght exists. They are found <a href="avoided.html">here</a> . </p>
-    <p class="mb-4">The current page presents an overview of the results of all steps run in TSS-CAPTUR, for example, the length of the transcript originally extracted from the genome and the predicted classification. 
-    In the case of RNA-transcripts, a terminator might have been allocated to the transcript and the coordinates would have been adapted. Also, a secondary structure analysis is run for RNA transcripts and allows a visualization of it.
-    All transcript undergo a motif analysis of the promoter region using MEME. A short descriptive overview follows:
+    The following interface serves as a visualization of the results produced by TSS-CAPTUR. 
+    The possibility exists between an <a href="overview.html">overview</a> of all results or the detailed results of the <a href="classified.html">classification</a> or the <a href="terminators.html">terminator allocation</a> steps of TSS-CAPTUR. The possibility of some TSS being ignored by TSS-CAPTUR due to their short length exists. They are found <a href="avoided.html">here</a>. 
+    For the more information on the tools and parameters used in TSS-CAPTUR, please refer to the <a href="references.html">references</a>.
+</p> 
+<p class="mb-4">The current page presents an overview of the results of all steps run in TSS-CAPTUR, for example, the length of the transcript originally extracted from the genome and the predicted classification. 
+    In the case of RNA-transcripts, a terminator might have been allocated to the transcript and the coordinates would have been adapted. 
+    Also, a secondary structure analysis is run using <a href="https://academic.oup.com/nar/article/36/suppl_2/W70/2505776">RNAFold</a> RNA transcripts and allows a visualization of it.
+    All transcript undergo a motif analysis of the promoter region using <a href="https://doi.org/10.1093/nar/gkp335">MEME</a> A short descriptive overview follows:
 </p>
 <div class="row">
 
@@ -20,7 +24,7 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                        Total of TSS</div>
+                        Total of input TSSs</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="allTSS"></span></div>
                 </div>
             </div>
@@ -34,7 +38,7 @@
             <div class="row no-gutters align-items-center">
                 <div id="orphan-card" class="col mr-2">
                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                        Total of Orphan TSS</div>
+                        Total of analyzed orphan TSSs</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="OTSS"></span></div>
                     <div class="h6 mb-0 font-weight-bold text-gray-800">Coding: <span id="CodingOTSS"></span></div>
                     <div class="h6 mb-0 font-weight-bold text-gray-800">ncRNAs: <span id="ncOTSS"></span></div>
@@ -52,7 +56,7 @@
                 <div class="row no-gutters align-items-center">
                     <div  id="as-card" class="col mr-2">
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            Total of Antisense TSS</div>
+                            Total of analyzed antisense TSSs</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="ATSS"></span></div>
                         <div class="h6 mb-0 font-weight-bold text-gray-800">Coding: <span id="CodingATSS"></span></div>
                         <div class="h6 mb-0 font-weight-bold text-gray-800">ncRNAs: <span id="ncATSS"></span></div>
@@ -70,7 +74,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                            Total of <a href="avoided.html">ignored TSS</a></div>
+                            Total of <a href="avoided.html">ignored TSSs</a></div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="iTSS"></span></div>
                     </div>
                     

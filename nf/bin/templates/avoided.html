@@ -5,10 +5,12 @@
     <h1 class="h3 mb-0 text-gray-800">TSS positions avoided</h1>
 </div>
 <p class="mb-4">
-    The following interface serves as a visualization of the results produced by TSS-CAPTUR. The possibility exists between an <a href="overview.html">overview</a>> of all results or the detailed results of the <a href="classified.html">classification</a> or the <a href="terminators.html">terminator allocation</a> steps of TSS-CAPTUR. The possibility of some TSS being ignored by TSS-CAPTUR due to their short lenght exists. They are found <a href="avoided.html">here</a> . </p>
-    <p class="mb-4">Generally, all transcripts analyzed by TSS-CAPTUR have a minimal length of 30 nts. The current page presents a list of TSS positions that were not taken into account by TSS-CAPTUR since they would produce too short transcripts due to one of the following reasons:
+    The following interface serves as a visualization of the results produced by TSS-CAPTUR. The possibility exists between an <a href="overview.html">overview</a> of all results or the detailed results of the <a href="classified.html">classification</a> or the <a href="terminators.html">terminator allocation</a> steps of TSS-CAPTUR. The possibility of some TSS being ignored by TSS-CAPTUR due to their short length exists. They are found <a href="avoided.html">here</a>. 
+    For the more information on the tools and parameters used in TSS-CAPTUR, please refer to the <a href="references.html">references</a>.
+</p>
+<p class="mb-4">Generally, all transcripts analyzed by TSS-CAPTUR have a minimal length of 30 nts. The current page presents a list of TSS positions that were not taken into account by TSS-CAPTUR since they would produce too short transcripts due to one of the following reasons:
         <ul class="mb-4">
-            <li class="nav-item"/> The TSS position is too close to an annotated gene of the given GFF file. This occurs when the GFF file used within TSS-CAPTUR is different as the one used for the classification of the TSS (eg. in TSSpredator)
+            <li class="nav-item"/> The TSS position is too close to an annotated gene of the given GFF file. This occurs when the GFF file used within TSS-CAPTUR is different as the one used for the classification of the TSS (eg. in <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003495">TSSpredator</a>)
             <li class="nav-item"/> The TSS is too close to a TSS that is classified as any other category than orphan or antisense, but too far away to the gene itself to be classified. Since this would force the transcript to include the 5'-UTR region of the gene, it is discarded. 
             <li class="nav-item"/> Two TSS labelled as orphans or antisense are too close to each other which would force the length of one transcript to be under the chosen threshold. For this, the first TSS in the read-direction is taken to produce a longer transcript. The other TSS would be excluded and could be interpreted as an internal TSS in a further classification. 
 

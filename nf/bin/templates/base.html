@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="static/css/own-css.css" rel="stylesheet">
     <link href="static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
@@ -72,6 +73,12 @@
                 <a class="nav-link" href="avoided.html">
                     <i class="fas fa-fw  fa-times-circle"></i>
                     <span>Ignored TSS positions</span></a>
+                <a class="nav-link" href="references.html">
+                    <i class="fas fa-fw  fa-book"></i>
+                    <span>References</span></a>
+                    <a class="nav-link" href="../report.zip" download>
+                    <i class="fas fa-fw  fa-download"></i>
+                    <span>Download</span></a>
             </li>
 
             <!-- Divider -->
@@ -124,7 +131,8 @@
                     let avoidedTSS = {{ avoidedTSS | safe}};
                     let summaryMotifs = {{ summaryMotifs | safe}};
                     let shortDescription = {{ short_description | safe}}
-
+                    let motifs = {{ number_motifs | safe}}
+                    let model = {{ model_cnit | safe}}
                 </script>
                 <script src="static/js/update_interface.js?random=<?php echo uniqid(); ?> "></script>
 
@@ -158,10 +166,11 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>University of Tübingen – <a
-                                href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/integrative-transkriptomik/home/">Integrative
-                                Transcriptomics <i className="fas fa-external-link-alt"></i></a> –TSS-CAPTUR 2024</span>
+                        <!-- Distribute spans in two rows-->
 
+                        <span>University of Tübingen – <a href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/integrative-transkriptomik/home/">Integrative Transcriptomics <i class="fas fa-fw  fa-external-link-alt"></i></a> –TSS-CAPTUR 2024</span>
+                        <br>
+                        <span> HTML template provided by <a  href="https://startbootstrap.com/theme/sb-admin-2">StartBootstrap </a> – Icons by <a href="https://fontawesome.com/">Font Awesome </a></span>
 
                     </div>
                 </div>

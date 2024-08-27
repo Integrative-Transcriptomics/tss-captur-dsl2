@@ -5,11 +5,18 @@
     <h1 class="h3 mb-0 text-gray-800">Terminator prediction</h1>
 </div>
 <p class="mb-4">
-    The following interface serves as a visualization of the results produced by TSS-CAPTUR. The possibility exists between an <a href="overview.html">overview</a>> of all results or the detailed results of the <a href="classified.html">classification</a> or the <a href="terminators.html">terminator allocation</a> steps of TSS-CAPTUR. The possibility of some TSS being ignored by TSS-CAPTUR due to their short lenght exists. They are found <a href="avoided.html">here</a> . </p>
-    <p class="mb-4">The current page presents a detailed view on the results of the terminator allocation for RNA transcripts. TSS-CAPTUR predicts intrinsic as well as rho-dependent terminators using TransTermHP and RhoTermPredict, respectively. 
-        If a terminator is found within a distance of 600 nt to the identified TSS, the terminator is allocated to the corresponding transcript. The terminator is evaluated wrt. to the predicted coordinates of the classification to ensure a terminator close to the 3' end of the predicted gene. 
-    If many terminators are allocated to the same TSS, only the best-scored terminator is chosen. If this terminator is rho-dependent, an intrinsic terminator is search within a window of 150 nts. 
-    If a terminator is allocated to many TSSs, the terminators are ranked wrt. to the TSS and the computed score. The 3'-end coordinates of only those transcripts with the best-ranked terminators are updated. 
+    The following interface serves as a visualization of the results produced by TSS-CAPTUR. The possibility exists between an <a href="overview.html">overview</a> of all results or the detailed results of the <a href="classified.html">classification</a> or the <a href="terminators.html">terminator allocation</a> steps of TSS-CAPTUR. The possibility of some TSS being ignored by TSS-CAPTUR due to their short length exists. They are found <a href="avoided.html">here</a>. 
+    For the more information on the tools and parameters used in TSS-CAPTUR, please refer to the <a href="references.html">references</a>.
+</p>
+
+    <p class="mb-4">
+        The current page presents a detailed view on the results of the terminator allocation for RNA transcripts. 
+        TSS-CAPTUR predicts intrinsic as well as rho-dependent terminators using <a href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2007-8-2-r22">TransTermHP</a> and <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2704-x">RhoTermPredict</a>, respectively. 
+        <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-2-8">QRNA</a> and <a href="https://academic.oup.com/nar/article/47/W1/W516/5506859">CNIT</a> already provide the coordinates of the most probable functional subsequence. 
+        If a terminator is found within these coordinates, the terminator is allocated to the corresponding transcript. 
+        The terminator is evaluated wrt. to the predicted coordinates of the classification to ensure a terminator close to the 3' end of the predicted gene. 
+        If many terminators are allocated to the same TSS, only the best-scored terminator is chosen. If this terminator is classified as rho-dependent, an intrinsic terminator is search within a window of 150 nts. 
+        If a terminator is allocated to many TSSs, the terminators are ranked wrt. to the TSS and the computed score. The 3'-end coordinates of only those transcripts with the best-ranked terminators are updated. 
 </p>
 <!-- Content Row -->
 <div class="card shadow mb-4">
