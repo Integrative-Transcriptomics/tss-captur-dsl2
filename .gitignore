@@ -23,4 +23,9 @@ RNAz-2.1
 **/uploads/**
 **/reports/**
 **/nextjs/public/example/scoelicolor/report/**
-**/nextjs/public/example/bacteroides/report/**
+**/nextjs/public/example/scoelicolor/report_old/**
+**/nextjs/public/example/cjejuni/report/**
+**/nextjs/public/example/cjejuni/report_old/**
+**/nextjs/public/example/bacteroidesplasmid/report_old/**
+**/nextjs/public/example/bacteroidesplasmid/report/**
+**/nextjs/public/example/cjejuni/report/**
