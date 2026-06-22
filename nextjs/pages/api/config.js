@@ -1,9 +1,9 @@
 // Define upload configuration
-const MAX_FILE_SIZE = (200) * 1024 * 1024; // 200MB
-const MAX_TOTAL_FILE_SIZE = (500) * 1024 * 1024; // 500MB
-const AVG_UPLOAD_SPEED = (1) / 8; // 0.125MB/s 
-const UPLOAD_BUFFER_TIME = 60 // in s
-const CHECK_INTERVAL = 5000; // in ms
+export const MAX_FILE_SIZE = (200) * 1024 * 1024; // 200MB
+export const MAX_TOTAL_FILE_SIZE = (500) * 1024 * 1024; // 500MB
+export const AVG_UPLOAD_SPEED = (1) / 8; // 0.125MB/s 
+export const UPLOAD_BUFFER_TIME = 60 // in s
+export const CHECK_INTERVAL = 5000; // in ms
 
 // Handle configuration requests and responses
 export default function configHandler(req, res) {
